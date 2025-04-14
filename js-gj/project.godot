@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="JS-GJ"
+run/main_scene="uid://d2dxb1bu66ijf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://Recursos/icon.svg"
+
+[display]
+
+window/size/viewport_width=1000
+window/size/viewport_height=500
 
 [gui]
 
