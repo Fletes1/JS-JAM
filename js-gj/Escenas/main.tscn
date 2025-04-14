@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpisflcy81wq7"]
+
+[ext_resource type="PackedScene" uid="uid://bxrsche4uoe5l" path="res://Escenas/personaje.tscn" id="1_6lbni"]
+[ext_resource type="Texture2D" uid="uid://7hsg850lb7ik" path="res://Recursos/icon.svg" id="1_vt1rs"]
+[ext_resource type="PackedScene" uid="uid://bjg076bff34nk" path="res://Escenas/enemigo_1.tscn" id="3_0kh0y"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.345098)
+scale = Vector2(10, 10)
+texture = ExtResource("1_vt1rs")
+
+[node name="Personaje" parent="." instance=ExtResource("1_6lbni")]
+
+[node name="Enemigo_1" parent="." instance=ExtResource("3_0kh0y")]
+position = Vector2(182, 182)
+
+[node name="Enemigo_2" parent="." instance=ExtResource("3_0kh0y")]
+position = Vector2(-25, 191)
+
+[node name="Enemigo_3" parent="." instance=ExtResource("3_0kh0y")]
+position = Vector2(-188, -123)
+
+[node name="Enemigo_4" parent="." instance=ExtResource("3_0kh0y")]
+position = Vector2(154, -161)
