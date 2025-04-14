@@ -13,7 +13,7 @@ config_version=5
 config/name="JS-GJ"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://Recursos/icon.svg"
 
 [gui]
 
