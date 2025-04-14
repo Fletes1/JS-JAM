@@ -20,6 +20,7 @@ config/icon="res://Recursos/icon.svg"
 
 window/size/viewport_width=1000
 window/size/viewport_height=500
+window/stretch/mode="canvas_items"
 
 [gui]
 
