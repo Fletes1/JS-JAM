@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bh3gbaqslsea7"
-path="res://.godot/imported/Dummy.fbx-c55322f0a1eb831d1d376e323326b8f9.scn"
+uid="uid://dq8nsh5b1w4cg"
+path="res://.godot/imported/Dummy.fbx-f436a34913120eb92ce0fada88e7a7d5.scn"
 
 [deps]
 
-source_file="res://Models/Characters/Dummy.fbx"
-dest_files=["res://.godot/imported/Dummy.fbx-c55322f0a1eb831d1d376e323326b8f9.scn"]
+source_file="res://Models/Dummy.fbx"
+dest_files=["res://.godot/imported/Dummy.fbx-f436a34913120eb92ce0fada88e7a7d5.scn"]
 
 [params]
 
