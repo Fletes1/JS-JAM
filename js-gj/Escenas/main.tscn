@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://du7c01eubns78"]
+
+[ext_resource type="PackedScene" uid="uid://c2ljo7d4885d4" path="res://Escenas/player.tscn" id="1_6lbni"]
+[ext_resource type="Script" uid="uid://uqqiuuiqe113" path="res://Escenas/main.gd" id="1_vt1rs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lbni"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vt1rs"]
+size = Vector3(100, 10, 100)
+
+[sub_resource type="Gradient" id="Gradient_0kh0y"]
+offsets = PackedFloat32Array(0.0238095, 1)
+colors = PackedColorArray(0.351563, 0.351563, 0.351563, 1, 0.720468, 0.720468, 0.720467, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7xwpo"]
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ia52"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_0kh0y")
+noise = SubResource("FastNoiseLite_7xwpo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crgrh"]
+albedo_texture = SubResource("NoiseTexture2D_2ia52")
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2ilj"]
+material = SubResource("StandardMaterial3D_crgrh")
+size = Vector3(100, 10, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktoa8"]
+
+[sub_resource type="Sky" id="Sky_1md0r"]
+sky_material = SubResource("ProceduralSkyMaterial_ktoa8")
+
+[sub_resource type="Environment" id="Environment_n3qho"]
+background_mode = 2
+sky = SubResource("Sky_1md0r")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6lbni"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vt1rs"]
+size = Vector3(1, 15, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_vt1rs")
+
+[node name="Player" parent="." instance=ExtResource("1_6lbni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.92013, 2.33035)
+
+[node name="Suelo" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_6lbni")
+angular_damp = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suelo"]
+shape = SubResource("BoxShape3D_vt1rs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Suelo"]
+mesh = SubResource("BoxMesh_s2ilj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n3qho")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sosten" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sosten"]
+shape = SubResource("SphereShape3D_6lbni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sosten"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+mesh = SubResource("BoxMesh_vt1rs")
