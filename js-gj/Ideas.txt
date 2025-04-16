@@ -1,5 +1,0 @@
-Un rouguelike shooter top-view con mecanicas de cansancio.
-Un humano peleando contra robots
-Cuando estas tranquilo, y te regeneras y tienes precision con el arma
-Cuando estas estresado, y te mueves rapido y con poca presicion
-cuando estas muy cansado, te mueves lento, tienes muy poca presicion y vas perdiendo vida lentamente
