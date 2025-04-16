@@ -1,12 +1,19 @@
 extends RigidBody3D
 @onready var camera_angle:Vector3 = Vector3(3,7,3)
 @onready var camera_des_pos:Vector3 = position + camera_angle
+## -F : Ciro, I need you to put the names of all $nodes into 
+#a onready var, not only to know which one is calling, but also to 
+#avoid having to change every single line-code when we(includes you) 
+#have to move the nodes
+
 
 var des_vel:Vector3
 var speed:int = 8
 
 var des_look_point:Vector3
 var rotacion_rueda:Vector3
+
+
 
 func _ready() -> void:
 	$Camera3D.global_position = camera_des_pos
