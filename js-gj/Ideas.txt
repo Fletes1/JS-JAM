@@ -1,0 +1,8 @@
+Enemies:
+	light:midium-low health, low impact and medium move speed
+	midium:midium health, medium impact and slow move speed
+	fast:los health, low impact al very fast move speed
+	tank:very high health, very high impact and very slow movement speed
+special:
+	emp:light one, but goes to turrets and stun them until the player fix it
+	
