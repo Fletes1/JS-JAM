@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://gcfho8cs8sk1"]
+
+[ext_resource type="Script" uid="uid://cmx62bu26rttu" path="res://Enemies/light.gd" id="1_erux7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ps2ao"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erux7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qind2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dv7sx"]
+material = SubResource("StandardMaterial3D_qind2")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyqpm"]
+material = SubResource("StandardMaterial3D_qind2")
+size = Vector3(0.5, 0.2, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v1rxu"]
+material = SubResource("StandardMaterial3D_qind2")
+radial_segments = 32
+rings = 16
+
+[sub_resource type="BoxMesh" id="BoxMesh_6gpla"]
+material = SubResource("StandardMaterial3D_qind2")
+size = Vector3(0.2, 0.8, 0.2)
+
+[node name="Light" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_ps2ao")
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp = 20.0
+script = ExtResource("1_erux7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_erux7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("BoxMesh_dv7sx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0383018, -0.427945)
+mesh = SubResource("BoxMesh_iyqpm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+mesh = SubResource("SphereMesh_v1rxu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497747, 0)
+mesh = SubResource("BoxMesh_6gpla")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+loop = false

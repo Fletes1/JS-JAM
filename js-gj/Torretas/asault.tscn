@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvnd2sfnx65s7"]
+
+[ext_resource type="Script" uid="uid://c5xvkntyp6i0c" path="res://Torretas/asault.gd" id="1_vebnf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxygk"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vebnf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_buivy"]
+
+[node name="Asault" type="RigidBody3D"]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_mxygk")
+script = ExtResource("1_vebnf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vebnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_buivy")
