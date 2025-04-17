@@ -1,8 +1,21 @@
+enemies when killed, left scrap, that wheith but can be picked up to make turrets,
+ counter-wheiths and upgrade the platform
+
+turrets:
+	asault:medium range, rof and damage
+	sniper:all map range, slow rof and high damage
+	flame thrower:spall rangle, splash damage and high dps
+	machine gun:medium range, low fov, high dps and rof
+	push one:push or change of line the enemies
+
 Enemies:
+	fast:los health, low impact al very fast move speed
 	light:midium-low health, low impact and medium move speed
 	midium:midium health, medium impact and slow move speed
-	fast:los health, low impact al very fast move speed
 	tank:very high health, very high impact and very slow movement speed
-special:
-	emp:light one, but goes to turrets and stun them until the player fix it
-	
+special:(All small move, medium health and medium impact)
+	emp:light one, but when dies explodes and stun nearvy turrets until the player fix it
+	rail one:if left alone, it makes a new path for the other robots
+	shiled one:blocks in the direction of the closest turret
+	ice one:slow down turrets nearvy
+	mother one:spawns light ones while its alive

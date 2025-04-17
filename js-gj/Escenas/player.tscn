@@ -21,7 +21,6 @@ rings = 16
 size = Vector3(0.2, 0.8, 0.2)
 
 [node name="Player" type="RigidBody3D"]
-mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_cnkc8")
 contact_monitor = true
 max_contacts_reported = 1
@@ -39,7 +38,6 @@ fov = 70.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-visible = false
 mesh = SubResource("BoxMesh_i8vih")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
