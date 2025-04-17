@@ -40,7 +40,7 @@ func _ready() -> void:
 		for y in 10:
 			max_y_0 = max(noiseterrain.get_noise_2d(x-5,y-5)*terr_alt,max_y_0)
 	$Suelo/Tienda_1.position.y = max_y_0
-	$Suelo/CollisionShape3D2.position.y = max_y_0+3
+	$Suelo/CollisionShape3D2.position.y = max_y_0+5
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):get_tree().change_scene_to_file("res://Escenas/main.tscn")
