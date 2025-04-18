@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2ljo7d4885d4"]
+
+[ext_resource type="Script" uid="uid://dryf11jutdd1p" path="res://Escenas/player.gd" id="1_cnkc8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cnkc8"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8vih"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgqwx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i8vih"]
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cnkc8"]
+size = Vector3(0.5, 0.2, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qgqwx"]
+radial_segments = 32
+rings = 16
+
+[sub_resource type="BoxMesh" id="BoxMesh_6njrx"]
+size = Vector3(0.2, 0.8, 0.2)
+
+[node name="Player" type="RigidBody3D"]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_cnkc8")
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp = 20.0
+script = ExtResource("1_cnkc8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i8vih")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.725374, -0.59733, 0.342094, 0, 0.496974, 0.867765, -0.688354, -0.629455, 0.360492, 3, 7, 3)
+top_level = true
+current = true
+fov = 70.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+mesh = SubResource("BoxMesh_qgqwx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("BoxMesh_i8vih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0383018, -0.427945)
+mesh = SubResource("BoxMesh_cnkc8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+mesh = SubResource("SphereMesh_qgqwx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497747, 0)
+mesh = SubResource("BoxMesh_6njrx")
+
+[node name="Mouse_ray" type="RayCast3D" parent="."]
+collision_mask = 2
+
+[node name="Node2D" type="Node2D" parent="."]
