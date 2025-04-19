@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ljo7d4885d4"]
+[gd_scene load_steps=9 format=3 uid="uid://c2ljo7d4885d4"]
 
 [ext_resource type="Script" uid="uid://dryf11jutdd1p" path="res://Escenas/player.gd" id="1_cnkc8"]
 
@@ -19,6 +19,12 @@ rings = 16
 
 [sub_resource type="BoxMesh" id="BoxMesh_6njrx"]
 size = Vector3(0.2, 0.8, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cnkc8"]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
 
 [node name="Player" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_cnkc8")
@@ -56,3 +62,10 @@ mesh = SubResource("BoxMesh_6njrx")
 collision_mask = 2
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_cnkc8")
+
+[node name="Ray_suelo" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+collision_mask = 2
