@@ -12,6 +12,7 @@ func _ready() -> void:
 	$Camera3D.look_at(position)
 
 func _physics_process(delta: float) -> void:
+	#$MeshInstance3D2.visible = $Ray_suelo.is_colliding()
 	des_vel = Vector3.ZERO
 	if Input.is_key_pressed(KEY_W):
 		des_vel -= Vector3(0,0,1).rotated(Vector3.UP,$Camera3D.rotation.y)
@@ -25,11 +26,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SHIFT):
 		des_vel *= 2
 	if $Ray_suelo.is_colliding():
-		$MeshInstance3D2.global_position = $Ray_suelo.get_collision_point() + $Ray_suelo.get_collision_normal()*5
-	$MeshInstance3D2.visible = $Ray_suelo.is_colliding()
-	apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z),Vector3.UP)
-	if des_vel == Vector3.ZERO:
-		apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z)*0.5,Vector3.UP)
+		var aply_force:Vector3
+		var normal:Vector3 = $Ray_suelo.get_collision_normal()
+		#aply_force = normal.rotated(des_vel.normalized(),-PI/2)*des_vel.length()
+		#aply_force = aply_force.rotated(aply_force.normalized(),PI)
+		#aply_force = normal.rotated(Vector3(1,0,0),PI/2)*des_vel.z
+		#aply_force += normal.rotated(Vector3(0,0,1),PI/2)*des_vel.x
+		#apply_force()
+		$MeshInstance3D2.global_position = $Ray_suelo.get_collision_point()+Vector3.UP + aply_force
+		apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z),Vector3.UP)
+		if des_vel == Vector3.ZERO:
+			apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z)*0.5,Vector3.UP)
 	
 	$Mouse_ray.global_position = $Camera3D.global_position
 	$Mouse_ray.target_position = $Camera3D.project_ray_normal($Node2D.get_global_mouse_position()) * 5000
