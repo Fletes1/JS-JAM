@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	apply_torque(-rotation*30)
 	
 	if Input.is_key_pressed(KEY_SPACE) and get_contact_count() > 0:
-		linear_velocity.y = 10
+		linear_velocity.y = min(10,linear_velocity.y+10)
 		mass = 100
 		await body_entered
 		mass = 1
