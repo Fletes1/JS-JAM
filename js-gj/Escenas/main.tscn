@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://qqskyegojwao"]
+[gd_scene load_steps=13 format=3 uid="uid://qqskyegojwao"]
 
 [ext_resource type="PackedScene" uid="uid://c2ljo7d4885d4" path="res://Escenas/player.tscn" id="1_6lbni"]
 [ext_resource type="Script" uid="uid://uqqiuuiqe113" path="res://Escenas/main.gd" id="1_vt1rs"]
 [ext_resource type="PackedScene" uid="uid://1adx1wpuuu7w" path="res://Recursos/tienda_2.tscn" id="3_2ia52"]
-[ext_resource type="PackedScene" uid="uid://bvnd2sfnx65s7" path="res://Torretas/asault.tscn" id="3_7xwpo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vt1rs"]
 friction = 0.1
@@ -48,9 +47,6 @@ shape = SubResource("CylinderShape3D_vt1rs")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Suelo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.00012207)
 shape = SubResource("BoxShape3D_0kh0y")
-
-[node name="Asault" parent="Suelo" instance=ExtResource("3_7xwpo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 9, 0)
 
 [node name="Tienda_1" parent="Suelo" instance=ExtResource("3_2ia52")]
 
