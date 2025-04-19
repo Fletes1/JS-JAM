@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	des_vel = des_vel.normalized()*speed
 	apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z)*20,Vector3.UP)
 	
-	apply_torque(-rotation*20)
+	apply_torque(-rotation*30)
 	if impacting and linear_velocity.y < 0 and get_contact_count() > 0 and get_colliding_bodies()[0].is_in_group("Suelo"):
 		queue_free()
 

@@ -35,12 +35,8 @@ func _ready() -> void:
 	noiseterrain_color.seed = randi()
 	create_paths()
 	crear_plataforma()
-	var max_y_0:float = -10
-	for x in 10:
-		for y in 10:
-			max_y_0 = max(noiseterrain.get_noise_2d(x-5,y-5)*terr_alt,max_y_0)
-	$Suelo/Tienda_1.position.y = max_y_0
-	$Suelo/CollisionShape3D2.position.y = max_y_0+5
+	$Suelo/Tienda_1.position.y = 0
+	$Suelo/CollisionShape3D2.position.y = 5
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):get_tree().change_scene_to_file("res://Escenas/main.tscn")
@@ -68,7 +64,12 @@ func create_paths():#creates the paths of the level
 		while cam_count < terr_size-start_distance-cam_size:
 			if !CP.has(round(cam_p)):
 				ins.curve.bake_interval = 512
-				ins.curve.add_point(Vector3(cam_p.x,noiseterrain.get_noise_2d(cam_p.x,cam_p.y)*terr_alt+1,cam_p.y))
+				var point_pos:Vector3 = Vector3(cam_p.x,noiseterrain.get_noise_2d(cam_p.x,cam_p.y)*terr_alt+1,cam_p.y)
+				if cam_p.length() < 10:
+					point_pos.y = 0
+				elif cam_p.length() < 20:
+					point_pos.y *= (min(pow((cam_p.length()-10)/10,2),1))
+				ins.curve.add_point(point_pos)
 				CP.append(round(cam_p))
 			cam_p += Vector2(cam_p_step,0).rotated(deg_to_rad(angle))
 			cam_count += cam_p_step
@@ -108,6 +109,10 @@ func crear_plataforma():#creates the patform
 				VF[X][Y] = CA_H[CA.find(check)]
 			else:#resto
 				VF[X][Y] = noiseterrain.get_noise_2d(check.x,check.y)*terr_alt
+			if check.length() < 10:
+				VF[X][Y] = 0
+			elif check.length() < 20:
+				VF[X][Y] *= (min(pow((check.length()-10)/10,2),1))
 	
 	#Creacion de terreno
 	st = SurfaceTool.new()
@@ -121,7 +126,7 @@ func crear_plataforma():#creates the patform
 						color_poner = Color(0.5,0.5,0.5)# * randf_range(0.98,1.02)
 					else:
 						color_poner = Color(0.4,0.4,0.4)#Fuera
-					color_poner = color_poner * (1 + (noiseterrain_color.get_noise_2d(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size))*0.5)*randf_range(0.98,1.02)#variacion extra
+					color_poner = color_poner * (1 + (VF[X+add[i*2]][Y+add[i*2+1]])/ terr_alt)*randf_range(0.98,1.02)#variacion extra
 					
 					st.set_color(color_poner)
 					st.add_vertex(Vector3(X+add[i*2]-terr_size, VF[(X+add[i*2])][(Y+add[i*2+1])] - int(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() > terr_size-cam_size)* pow(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() - (terr_size-cam_size),2), Y+add[i*2+1]-terr_size))

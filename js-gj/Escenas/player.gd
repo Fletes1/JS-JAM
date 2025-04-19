@@ -1,12 +1,11 @@
 extends RigidBody3D
-@onready var camera_angle:Vector3 = Vector3(3,15,3)
-@onready var camera_des_pos:Vector3 = position + camera_angle
+@onready var camera_angle:Vector3 = Vector3(3,15,3)#Angle of the camera respect of the player
+@onready var camera_des_pos:Vector3 = position + camera_angle#Desire camera position
 
-var des_vel:Vector3
+var des_vel:Vector3#Desire velocity
 var speed:int = 8
 
-var des_look_point:Vector3
-var rotacion_rueda:Vector3
+var des_look_point:Vector3#Desire look point
 
 func _ready() -> void:
 	$Camera3D.global_position = camera_des_pos
