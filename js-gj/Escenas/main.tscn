@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2ljo7d4885d4" path="res://Escenas/player.tscn" id="1_6lbni"]
 [ext_resource type="Script" uid="uid://uqqiuuiqe113" path="res://Escenas/main.gd" id="1_vt1rs"]
-[ext_resource type="PackedScene" uid="uid://cr4k34jsd5lco" path="res://Recursos/tienda_2.tscn" id="3_2ia52"]
+[ext_resource type="PackedScene" uid="uid://1adx1wpuuu7w" path="res://Recursos/tienda_2.tscn" id="3_2ia52"]
 [ext_resource type="PackedScene" uid="uid://bvnd2sfnx65s7" path="res://Torretas/asault.tscn" id="3_7xwpo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vt1rs"]
