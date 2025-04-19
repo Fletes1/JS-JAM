@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		#aply_force = normal.rotated(Vector3(1,0,0),PI/2)*des_vel.z
 		#aply_force += normal.rotated(Vector3(0,0,1),PI/2)*des_vel.x
 		#apply_force()
-		$MeshInstance3D2.global_position = $Ray_suelo.get_collision_point()+Vector3.UP + aply_force
+		$ball_speed_test.global_position = $Ray_suelo.get_collision_point()+Vector3.UP + aply_force
 		apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z),Vector3.UP)
 		if des_vel == Vector3.ZERO:
 			apply_force(Vector3((des_vel-linear_velocity).x,0,(des_vel-linear_velocity).z)*0.5,Vector3.UP)
