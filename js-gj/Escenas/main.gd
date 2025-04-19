@@ -67,8 +67,8 @@ func create_paths():#creates the paths of the level
 				var point_pos:Vector3 = Vector3(cam_p.x,noiseterrain.get_noise_2d(cam_p.x,cam_p.y)*terr_alt+1,cam_p.y)
 				if cam_p.length() < 10:
 					point_pos.y = 0
-				elif cam_p.length() < 20:
-					point_pos.y *= (min(pow((cam_p.length()-10)/10,2),1))
+				elif cam_p.length() < 30:
+					point_pos.y *= (min(pow((cam_p.length()-10)/20,2),1))
 				ins.curve.add_point(point_pos)
 				CP.append(round(cam_p))
 			cam_p += Vector2(cam_p_step,0).rotated(deg_to_rad(angle))
@@ -111,8 +111,8 @@ func crear_plataforma():#creates the patform
 				VF[X][Y] = noiseterrain.get_noise_2d(check.x,check.y)*terr_alt
 			if check.length() < 10:
 				VF[X][Y] = 0
-			elif check.length() < 20:
-				VF[X][Y] *= (min(pow((check.length()-10)/10,2),1))
+			elif check.length() < 30:
+				VF[X][Y] *= (min(pow((check.length()-10)/20,2),1))
 	
 	#Creacion de terreno
 	st = SurfaceTool.new()
@@ -123,10 +123,10 @@ func crear_plataforma():#creates the patform
 			if Vector2(X-terr_size,Y-terr_size).length() <= terr_size:
 				for i in add.size()/2:
 					if CA.has(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size)):#Pista
-						color_poner = Color(0.5,0.5,0.5)# * randf_range(0.98,1.02)
+						color_poner = Color("DAE0EE")
 					else:
-						color_poner = Color(0.4,0.4,0.4)#Fuera
-					color_poner = color_poner * (1 + (VF[X+add[i*2]][Y+add[i*2+1]])/ terr_alt)*randf_range(0.98,1.02)#variacion extra
+						color_poner = Color("8F9AB6")#Fuera
+					color_poner = color_poner * (1 + (VF[X+add[i*2]][Y+add[i*2+1]])/ terr_alt)*randf_range(0.98,1.02)*0.55#variacion extra
 					
 					st.set_color(color_poner)
 					st.add_vertex(Vector3(X+add[i*2]-terr_size, VF[(X+add[i*2])][(Y+add[i*2+1])] - int(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() > terr_size-cam_size)* pow(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() - (terr_size-cam_size),2), Y+add[i*2+1]-terr_size))
