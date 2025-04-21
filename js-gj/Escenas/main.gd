@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 func spawn_enemy(type:int,path:int):
 	var ins = preload("res://Enemies/light.tscn").instantiate()
 	ins.path_asig = path
-	#ins.position = Vector3.UP*100
 	add_child(ins)
 
 func create_paths():#creates the paths of the level
@@ -109,10 +108,10 @@ func crear_plataforma():#creates the patform
 				VF[X][Y] = CA_H[CA.find(check)]
 			else:#resto
 				VF[X][Y] = noiseterrain.get_noise_2d(check.x,check.y)*terr_alt
-			if check.length() < 10:
+			if check.length() < 15:
 				VF[X][Y] = 0
 			elif check.length() < 30:
-				VF[X][Y] *= (min(pow((check.length()-10)/20,2),1))
+				VF[X][Y] *= (min(pow((check.length()-15)/15,2),1))
 	
 	#Creacion de terreno
 	st = SurfaceTool.new()
@@ -126,7 +125,7 @@ func crear_plataforma():#creates the patform
 						color_poner = Color("DAE0EE")
 					else:
 						color_poner = Color("8F9AB6")#Fuera
-					color_poner = color_poner * (1 + (VF[X+add[i*2]][Y+add[i*2+1]])/ terr_alt)*randf_range(0.98,1.02)*0.55#variacion extra
+					color_poner = color_poner * (1 + (VF[X+add[i*2]][Y+add[i*2+1]])/ terr_alt)*randf_range(0.98,1.02)*0.45#variacion extra
 					
 					st.set_color(color_poner)
 					st.add_vertex(Vector3(X+add[i*2]-terr_size, VF[(X+add[i*2])][(Y+add[i*2+1])] - int(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() > terr_size-cam_size)* pow(Vector2(X+add[i*2]-terr_size,Y+add[i*2+1]-terr_size).length() - (terr_size-cam_size),2), Y+add[i*2+1]-terr_size))

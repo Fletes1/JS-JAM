@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://gcfho8cs8sk1"]
+[gd_scene load_steps=12 format=4 uid="uid://gcfho8cs8sk1"]
 
 [ext_resource type="Script" uid="uid://cmx62bu26rttu" path="res://Enemies/light.gd" id="1_erux7"]
 
@@ -6,6 +6,24 @@
 friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erux7"]
+height = 1.6
+
+[sub_resource type="Gradient" id="Gradient_erux7"]
+interpolation_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qind2"]
+offset = Vector3(-82.15, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dv7sx"]
+width = 100
+height = 100
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_erux7")
+noise = SubResource("FastNoiseLite_qind2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyqpm"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_dv7sx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u3ae"]
 
@@ -38,22 +56,35 @@ _surfaces = [{
 "vertex_count": 89,
 "vertex_data": PackedByteArray("xm4svQAAAABls3Y87V90vMplbbxls3Y8j6ItOAAAAAAftXq3ZiNCPAAAAAB/zUs8xLEJOwAAAAAcIqw7j6ItOAAAAAAftXq37V90vMplbbxls3Y8k66QvO375rtls3Y8jhhZvAAAAAA/gro8UvOvOwAAAACYfHc87V90vMplbbxls3Y8ZiNCPAAAAAB/zUs87V90vMplbbxls3Y8OvEdvQAAAABls3Y87V90vMplbbxls3Y8xm4svQAAAABls3Y8k66QvO375rtls3Y87V90vMplbTxls3Y8jhhZvAAAAAA/gro8UvOvOwAAAACYfHc87V90vMplbTxls3Y8ZiNCPAAAAAB/zUs8OvEdvQAAAABls3Y8jhhZvAAAAAA/gro8/h6hO3zMALwXFSY97V90vMplbbxls3Y8xm4svQAAAABls3Y8/h6hO3zMADwXFSY9OvEdvQAAAABls3Y8OvEdvQAAAABls3Y87V90vMplbbxls3Y8/h6hO3zMALwXFSY9/h6hO3zMALwXFSY9xm4svQAAAABls3Y8OvEdvQAAAABls3Y87V90vMplbTxls3Y8/h6hO3zMADwXFSY97V90vMplbTxls3Y8xm4svQAAAABls3Y8j6ItOAAAAAAftXq3/h6hO3zMADwXFSY97V90vMplbTxls3Y8OvEdvQAAAABls3Y8j6ItOAAAAAAftXq3xLEJOwAAAAAcIqw77V90vMplbTxls3Y8ZiNCPAAAAAB/zUs8UvOvOwAAAACYfHc8k66QvO375rtls3Y8KTSOvA2RCLx/lNc8KTSOvA2RCLx/lNc8k66QvO375rtls3Y87V90vMplbbxls3Y8OvEdvQAAAABls3Y87V90vMplbTxls3Y8k66QvO375jtls3Y85K2aO4Qx37pfKlY8UvOvOwAAAACYfHc85K2aO4Qx37pfKlY8xLEJOwAAAAAcIqw77V90vMplbbxls3Y85K2aO4Qx37pfKlY8xLEJOwAAAAAcIqw75K2aO4Qx37pfKlY8UvOvOwAAAACYfHc8KTSOvA2RCLx/lNc8xm4svQAAAABls3Y8k66QvO375jtls3Y87V90vMplbTxls3Y8UvOvOwAAAACYfHc8k66QvO375jtls3Y8KTSOvA2RCDx/lNc8xm4svQAAAABls3Y8KTSOvA2RCDx/lNc8xm4svQAAAABls3Y8jhhZvAAAAAA/gro8OvEdvQAAAABls3Y8k66QvO375jtls3Y85K2aO4Qx3zpfKlY8UvOvOwAAAACYfHc85K2aO4Qx3zpfKlY8xLEJOwAAAAAcIqw75K2aO4Qx3zpfKlY87V90vMplbTxls3Y8xLEJOwAAAAAcIqw75K2aO4Qx3zpfKlY8UvOvOwAAAACYfHc8xm4svQAAAABls3Y8KTSOvA2RCDx/lNc8ViqRFv5UKqtWKpEW/lQqq1YqkRb+VCqrzaopEv///7/pvjot////v+m+Oi3///+/6b46Lf///78Pk2VB////Pw+TZUH///8/D5NlQf///z/Cf+h/M7VfZQ+TZUH///8/SKfjSP///z//f/9/Y8oxJf9//39jyjGl/3//f2PKMSVWbqNL3xwD0P9//39jyjElD5OZvv///z8Pk5m+////P0inG7f///8/D5OZvv///z9WbqNL3xwD0FZuo0vfHAPQdFpTYf///z9CXdM+////P0Jd0z7///8//38rHv///z//fyse////P2TTntf///+/ZNOe1////79k057X////v/9/0+H///8//3/T4f///z//f9Ph////P0JdK8H///8/dFqrnv///z9WKm3p/lQrK1Yqben+VCsrVipt6f5UKytk02Ao////v2TTYCj///+/ZNNgKP///7/pvsTS////v+m+xNL///+/6b7E0v///7/NqtXt////v8J/6H8ztV9lwn/ofzO1X2VCXdM+////P2TTntf///+//3//f7MCpb7/f/9/swKlvv9//3+zAqU+/3//f7MCpT7/f/9/swKlPg+TZUH///8/D5NlQf///z/NqikS////v82qKRL///+/88BdJv///7/zwF0m////v/PAXSb///+/SKfjSP///z9Ip+NI////P3RaU2H///8/dFpTYf///z8Pk5m+////P8J/FoAztV/lwn8WgDO1X+XCfxaAM7Vf5UJdK8H///8/Ql0rwf///z9k02Ao////v/9/Kx7///8/Vm5btN8cA1BWblu03xwDUFZuW7TfHANQD5OZvv///z8Pk5m+////P82q1e3///+/zarV7f///7/zwKHZ////v/PAodn///+/88Ch2f///79Ipxu3////P0inG7f///8/dFqrnv///z90Wque////Pw==")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g4bki")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qind2"]
+size = Vector3(1.5, 0.5, 0.8)
+
 [node name="Light" type="RigidBody3D"]
+rotation_order = 1
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_ps2ao")
+center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
 angular_damp = 20.0
 script = ExtResource("1_erux7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -3.72529e-08, 0)
 shape = SubResource("CapsuleShape3D_erux7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0, 0, 0)
+transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0.4, -0.5, 0)
+material_overlay = SubResource("StandardMaterial3D_iyqpm")
 mesh = SubResource("ArrayMesh_erux7")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 loop = false
+
+[node name="Ray_suelo" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_qind2")
+target_position = Vector3(0, -0.3, 0)
+collision_mask = 2

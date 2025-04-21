@@ -62,6 +62,7 @@ environment = SubResource("Environment_n3qho")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 1.5
 light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -83,6 +84,7 @@ shape = SubResource("SphereShape3D_6lbni")
 curve = SubResource("Curve3D_vt1rs")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
