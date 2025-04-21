@@ -26,7 +26,7 @@ func load_shop() -> void: ##Loads the items into the list
 
 func buy(shop_item:ShopItem) -> void:
 	if main.scraps >= shop_item.price:
-		
+		close_shop()
 		#Class check
 		if shop_item is CharacterItem:
 			
@@ -34,7 +34,8 @@ func buy(shop_item:ShopItem) -> void:
 			
 		elif shop_item is TurretItem:
 			
-			pass
+			var turret_to_place = load(shop_item.turret).instantiate()
+			player.hold_turret(turret_to_place)
 			
 		else:
 			printerr(shop_item," does not have a function as of now.")

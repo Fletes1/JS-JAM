@@ -13,7 +13,8 @@ var speed:int = 8
 var des_look_point:Vector3
 var rotacion_rueda:Vector3
 
-
+var held_turret : Node3D
+var delay : bool = false
 
 func _ready() -> void:
 	$Camera3D.global_position = camera_des_pos
@@ -55,3 +56,21 @@ func _physics_process(delta: float) -> void:
 	camera_des_pos += (position *0.8 + des_look_point*0.2 + camera_angle + Vector3(linear_velocity.x,0,linear_velocity.z)/3 -camera_des_pos)*delta*5
 	camera_des_pos = camera_des_pos.normalized() * min(camera_des_pos.length(),get_parent().terr_size-3)
 	$Camera3D.global_position = camera_des_pos
+	
+	if held_turret:
+		held_turret.global_position = des_look_point + Vector3(0,1,0)
+		
+		if Input.is_action_just_pressed("ui_mouse_Left") and delay:
+			#Turret Place
+			held_turret.reparent($"../Suelo")
+			held_turret.process_mode = Node.PROCESS_MODE_INHERIT
+			held_turret = null
+			delay = false
+
+func hold_turret(turret_to_place:Node3D) -> void:
+	held_turret = turret_to_place
+	held_turret.process_mode = Node.PROCESS_MODE_DISABLED
+	add_child(held_turret)
+	get_tree().create_timer(0.25).connect("timeout",func():
+		delay = true
+		)
