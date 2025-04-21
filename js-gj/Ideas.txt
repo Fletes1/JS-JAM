@@ -19,3 +19,31 @@ special:(All small move, medium health and medium impact)
 	shiled one:blocks in the direction of the closest turret
 	ice one:slow down turrets nearvy
 	mother one:spawns light ones while its alive
+
+Character Actions:
+	Garbage collection
+	drop garbage
+	Build turret,
+	Move turret.
+	buy IMPROVEMENT. // linked to the store or at any time?
+
+Enemies Actions:
+	Be destroyed
+
+Mouse interface:
+	normal,
+	buildable
+	collectible
+
+User interface
+	Life ????
+	Options menu... (Cannot be with Escape (Esc))
+
+Upgrades available in the Workshop:
+	--- Land
+		Improve support
+	--- Character 
+		Speed
+	--- Turrets
+		Damage
+		weight
