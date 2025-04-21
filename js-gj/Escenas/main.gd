@@ -64,10 +64,10 @@ func create_paths():#creates the paths of the level
 			if !CP.has(round(cam_p)):
 				ins.curve.bake_interval = 512
 				var point_pos:Vector3 = Vector3(cam_p.x,noiseterrain.get_noise_2d(cam_p.x,cam_p.y)*terr_alt+1,cam_p.y)
-				if cam_p.length() < 10:
+				if cam_p.length() < 15:
 					point_pos.y = 0
 				elif cam_p.length() < 30:
-					point_pos.y *= (min(pow((cam_p.length()-10)/20,2),1))
+					point_pos.y *= (min(pow((cam_p.length()-15)/15,2),1))
 				ins.curve.add_point(point_pos)
 				CP.append(round(cam_p))
 			cam_p += Vector2(cam_p_step,0).rotated(deg_to_rad(angle))
