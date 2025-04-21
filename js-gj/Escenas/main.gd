@@ -1,9 +1,11 @@
 extends Node3D
+@onready var player = $Player
 @onready var noiseterrain:FastNoiseLite = FastNoiseLite.new()
 @onready var noiseterrain_color:FastNoiseLite = FastNoiseLite.new()
 @onready var material_suelo = load("res://Recursos/Suelo_mat.tres")
 var terr_size:int = 80#ratio of the terrain
 var terr_alt:int = 10#variation of the terrain
+var scraps : int = 0
 
 var amount:float = 0#Variables auxiliares
 var cant:int = 0
