@@ -65,6 +65,12 @@ func _physics_process(delta: float) -> void:
 	camera_des_pos += (position *0.8 + des_look_point*0.2 + camera_angle + Vector3(linear_velocity.x,0,linear_velocity.z)/3 -camera_des_pos)*delta*5
 	camera_des_pos = camera_des_pos.normalized() * min(camera_des_pos.length(),get_parent().terr_size-3)
 	$Camera3D.global_position = camera_des_pos
+	$Ray_suelo.global_rotation = Vector3.ZERO
+	
+	$MeshInstance3D/MeshInstance3D2.rotate_x(($MeshInstance3D/MeshInstance3D2.global_position - last_pos_wheel).z*2)
+	$MeshInstance3D/MeshInstance3D2.rotate_z(-($MeshInstance3D/MeshInstance3D2.global_position - last_pos_wheel).x*2)
+	last_pos_wheel = $MeshInstance3D/MeshInstance3D2.global_position
+	$MeshInstance3D/MeshInstance3D2.global_position = $MeshInstance3D/Marker3D.global_position
 	
 	if held_turret:
 		held_turret.global_position = des_look_point + Vector3(0,1,0)
@@ -83,9 +89,3 @@ func hold_turret(turret_to_place:Node3D) -> void:
 	get_tree().create_timer(0.25).connect("timeout",func():
 		delay = true
 		)
-	$Ray_suelo.global_rotation = Vector3.ZERO
-	
-	$MeshInstance3D/MeshInstance3D2.rotate_x(($MeshInstance3D/MeshInstance3D2.global_position - last_pos_wheel).z*2)
-	$MeshInstance3D/MeshInstance3D2.rotate_z(-($MeshInstance3D/MeshInstance3D2.global_position - last_pos_wheel).x*2)
-	last_pos_wheel = $MeshInstance3D/MeshInstance3D2.global_position
-	$MeshInstance3D/MeshInstance3D2.global_position = $MeshInstance3D/Marker3D.global_position
