@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TurretItem" load_steps=2 format=3 uid="uid://bbv6js8yt5alq"]
+
+[ext_resource type="Script" uid="uid://0thoyr7aw322" path="res://Shop/turret_item.gd" id="1_hd8pk"]
+
+[resource]
+script = ExtResource("1_hd8pk")
+turret = "uid://bvnd2sfnx65s7"
+name = "Assault Turret"
+price = 0
+metadata/_custom_type_script = "uid://0thoyr7aw322"

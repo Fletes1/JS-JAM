@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterItem" load_steps=2 format=3 uid="uid://biknpdgfyu1xj"]
+
+[ext_resource type="Script" uid="uid://n0peyu2k67xt" path="res://Shop/character_item.gd" id="1_xm6w4"]
+
+[resource]
+script = ExtResource("1_xm6w4")
+stat_name = "speed"
+boost = 2
+name = "Speed Up"
+price = 0
+metadata/_custom_type_script = "uid://n0peyu2k67xt"

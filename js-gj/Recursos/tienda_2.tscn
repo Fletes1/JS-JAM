@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://1adx1wpuuu7w"]
+[gd_scene load_steps=4 format=3 uid="uid://1adx1wpuuu7w"]
 
 [ext_resource type="PackedScene" uid="uid://ssqluxfdjlri" path="res://Recursos/Tienda_2.glb" id="1_a75d1"]
+[ext_resource type="Script" uid="uid://dpkdb6cveryxt" path="res://Shop/shop.gd" id="2_smt2d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smt2d"]
+size = Vector3(2.5, 4, 3)
 
 [node name="Tienda_2" instance=ExtResource("1_a75d1")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -10,3 +14,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54258, 0)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 25.0
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+script = ExtResource("2_smt2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_smt2d")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="collided_check"]
